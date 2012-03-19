@@ -6,7 +6,7 @@
     = rating
     = check_box_tag "ratings[#{rating}]", rating, (params["ratings"].blank? ? false : params["ratings"][rating] == rating), :id => "ratings_#{rating}"
   = hidden_field_tag :order, params[:order]
-  = submit_tag 'Refresh'
+  = submit_tag 'Refresh', :id => "ratings_submit"
 %table#movies
   %thead
     %tr
