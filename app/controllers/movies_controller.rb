@@ -7,6 +7,7 @@ class MoviesController < ApplicationController
   end
 
   def index
+    @all_ratings = s ['G','PG','PG-13','R']
     movies = Movie
     unless params[:order].blank?
       if params[:order] == 'title'
@@ -15,6 +16,7 @@ class MoviesController < ApplicationController
         movies = movies.order(:release_date)
       end
     end
+    movies = movies.where(params[:ratings]) unless params[:ratings].blank?
     @movies = movies.all
   end
 
