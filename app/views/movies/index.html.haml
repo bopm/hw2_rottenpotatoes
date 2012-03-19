@@ -4,9 +4,9 @@
 %table#movies
   %thead
     %tr
-      %th{:class => (params[:order] == "title" ? "hilite" : "")}= link_to("Movie Title", movies_path(:order => :title), :html_options => {:id => 'title_header'})
+      %th{:class => (params[:order] == "title" ? "hilite" : "")}= link_to("Movie Title", movies_path(:order => :title), :id => 'title_header')
       %th Rating
-      %th{:class => (params[:order] == "date" ? "hilite" : "")}= link_to("Release Date", movies_path(:order => :date), :html_options => {:id => 'release_date_header'})
+      %th{:class => (params[:order] == "date" ? "hilite" : "")}= link_to("Release Date", movies_path(:order => :date), :id => 'release_date_header')
       %th More Info
   %tbody
     - @movies.each do |movie|
