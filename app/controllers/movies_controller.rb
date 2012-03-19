@@ -7,7 +7,7 @@ class MoviesController < ApplicationController
   end
 
   def index
-    @all_ratings = s ['G','PG','PG-13','R']
+    @all_ratings = ['G','PG','PG-13','R']
     movies = Movie
     unless params[:order].blank?
       if params[:order] == 'title'
