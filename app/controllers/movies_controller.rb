@@ -1,5 +1,18 @@
 class MoviesController < ApplicationController
 
+  def set_filters_orders
+    redirect_needed = false
+    if !params[:order].blank? and session[:order] != params[:order]
+      session[:order] = params[:order]
+      redirect_needed = true
+    end
+    if !params[:ratings].blank? and session[:ratings] != params[:ratings]
+      session[:ratings] = params[:ratings] unless params[:ratings].blank?
+      redirect_needed = true
+    end
+    redirect_to movies_path(:order => session[:order], :ratings => session[:ratings]) if redirect_needed
+  end
+
   def show
     id = params[:id] # retrieve movie ID from URI route
     @movie = Movie.find(id) # look up movie by unique ID
