@@ -1,4 +1,5 @@
 class MoviesController < ApplicationController
+  before_filter :set_filters_orders, :only => :index
 
   def set_filters_orders
     redirect_needed = false
