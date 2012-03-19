@@ -16,7 +16,7 @@ class MoviesController < ApplicationController
         movies = movies.order(:release_date)
       end
     end
-    movies = movies.where(params[:ratings]) unless params[:ratings].blank?
+    movies = movies.where(:ratings => params[:ratings]) unless params[:ratings].blank?
     @movies = movies.all
   end
 
