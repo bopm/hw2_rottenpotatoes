@@ -11,6 +11,7 @@ class MoviesController < ApplicationController
       session[:ratings] = params[:ratings] unless params[:ratings].blank?
       redirect_needed = true
     end
+    redirect_needed = true if (session[:order] != params[:order]) or (session[:ratings] != params[:ratings])
     redirect_to movies_path(:order => session[:order], :ratings => session[:ratings]) if redirect_needed
   end
 
